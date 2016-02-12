@@ -1,6 +1,9 @@
 #scripta 
 
 #!/bin/bash
+
+cd /etc
+
 sudo yum install -y git
 
 sudo yum install -y gcc-c++ make &
@@ -57,6 +60,10 @@ echo returned to /etc, now pulling Noise-tester
 echo now entering noise-tester workfolder
 cd /etc/noisetester/server
 
+sudo su
+ 
+sleep 3
+
 npm install &
 wait $!
 
@@ -89,6 +96,7 @@ sudo sed -i 's/#ms-dns 10.0.0.2/ms-dns  8.8.4.4/g' /etc/ppp/options.pptpd
 sudo sed -i 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/g' /etc/sysctl.conf
 
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
 
 sudo service pptpd stop
 
