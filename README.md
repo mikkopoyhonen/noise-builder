@@ -5,8 +5,7 @@ This tool is used to test any program or service that uses internet connectivity
 Noise-tester is a proxy server which is used as a gatewat and whit what we can simulate bad network conditions.
 > With noise-tester  we are able to simulate different kinds of network conditions such as delay, latency and packetloss.
 
-This repository will contain needed tools and documentation needed to produce noise-tester service.
-
+This repository contains scripts to deploy noise-tester service
 
 ###How does it work?
 See the following chart to understand the inner workings of the noise-tester.
@@ -18,7 +17,14 @@ See the following chart to understand the inner workings of the noise-tester.
 ####Run startup.sh
 Startup.sh will build up the dependences for Noise-tester and start up services
 
-####Connecting Noise-PROXY
+###NOTICE!
+#### Packages and scripts are designed to run on Centos4 Amazon AMI. It is not guaranteed that same installation packages will work on other UNIX distros
+
+##Connecting Noise-PROXY
+
+####Windows users
+
+####Unix users
 
 ### API
 You are able to send configuration parameters in `application/json` format to configure the noise container.
