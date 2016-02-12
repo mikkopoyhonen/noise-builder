@@ -41,7 +41,10 @@ sudo ./configure
 make &
 wait $!
 
-sudo make install
+sudo make install &
+wait $!
+
+sleep 3
 
 sudo git clone https://github.com/isaacs/npm.git &
 wait $!
@@ -50,18 +53,19 @@ echo cloned NPM
 echo entering npm workfolder
 
 cd npm
-sudo make install
+sudo make install &
+wait $!
 
 cd /etc
 
 echo returned to /etc, now pulling Noise-tester
 
 
-echo now entering noise-tester workfolder
+echo waiting for npm to finish installing
 cd /etc/noisetester/server
 
  
-sleep 3
+sleep 20
 
 npm install &
 wait $!
@@ -92,7 +96,12 @@ sudo sed -i 's/#ms-dns 10.0.0.2/ms-dns  8.8.4.4/g' /etc/ppp/options.pptpd
 sudo sed -i 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/g' /etc/sysctl.conf
 
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo service iptables save &
+wait $!
+sudo service iptables restart &
+wait $!
 
+sudo /sbin/sysctl -p
 
 sudo service pptpd stop
 
