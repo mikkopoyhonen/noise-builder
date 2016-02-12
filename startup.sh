@@ -60,7 +60,6 @@ echo returned to /etc, now pulling Noise-tester
 echo now entering noise-tester workfolder
 cd /etc/noisetester/server
 
-sudo su
  
 sleep 3
 
@@ -70,11 +69,11 @@ wait $!
 
 
 
-read -p "Enter your secondary IP address which you want to use for PPTP : " IPREMOTE
-echo "remoteip $IPREMOTE" >> /etc/pptpd.conf
-
-read -p "Enter ip addresses allocated to machines, for example 192.168.0.1-20 : " iplocal
+read -p "Enter your IP address which you want to use for PPTP prefer elastic ip in amazon EC2 : " iplocal
 echo "localip $iplocal" >> /etc/pptpd.conf
+
+read -p "Enter ip address pool allocated to machines, for example 192.168.0.1-20 : " ipremote
+echo "remoteip $ipremote" >> /etc/pptpd.conf
 
 echo "Added $IPREMTOE as remote ip!"
 
@@ -97,7 +96,7 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 sudo service pptpd stop
 
-sleep 5
+sleep 1
 
 sudo service pptpd start &
 wait $!

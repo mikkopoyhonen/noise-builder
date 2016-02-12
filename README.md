@@ -1,19 +1,36 @@
-#noise-tester
-noise-tester is a highly experimental project made by Mikko Pöyhönen`. 
+#Noise-tester
+Noise-tester is a highly experimental project made by Mikko Pöyhönen`. 
 This tool is used to test any program or service that uses internet connectivity.
 
 Noise-tester is a proxy server which is used as a gatewat and whit what we can simulate bad network conditions.
-> With noise-tester  we are able to simulate different kinds of network conditions such as delay, latency and packetloss.
+With noise-tester  we are able to simulate different kinds of network conditions such as delay, latency and packetloss.
 
 This repository contains scripts to deploy noise-tester service
+
+###quirements 
+
+1. Server with two interfaces, eth 0 and eth1.
+
+2. Public IP addresses for both interfaces (if you dont run service in LAN)
+
+
 
 ###How does it work?
 See the following chart to understand the inner workings of the noise-tester.
 ![lucidchart](http://i64.tinypic.com/29w8l69.png "Noise-tester")
 
+#### If you have git clone this repository
+And run
+ 
+<sudo su
 
-####Clone this repository
+<./startup.sh
 
+####OR
+Copy startup.sh into text file and run:
+<sudo chmod +x startup.sh
+<sudo su
+<sudo ./startup.sh
 ####Run startup.sh
 Startup.sh will build up the dependences for Noise-tester and start up services
 
