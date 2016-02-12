@@ -67,9 +67,6 @@ sleep 3
 npm install &
 wait $!
 
-sudo make install &
-wait &!
-echo installing noice-tester and enabling services
 
 
 
