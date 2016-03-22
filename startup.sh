@@ -107,6 +107,8 @@ sudo service pptpd stop
 
 sleep 1
 
+sudo tc qdisc add dev eth0 root netem
+
 sudo service pptpd start &
 wait $!
 
